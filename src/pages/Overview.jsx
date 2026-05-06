@@ -42,6 +42,7 @@ function MonthSwitcher({ selectedMonth, onChange }) {
 
 export default function Overview({
   expenses,
+  getBudget,
   fixedExpenses,
   addFixedExpense,
   removeFixedExpense,
@@ -51,6 +52,7 @@ export default function Overview({
   const monthExpenses = expenses.filter((expense) => expense.date.startsWith(selectedMonth))
   const monthTotal = monthExpenses.reduce((sum, expense) => sum + expense.amount, 0)
   const fixedTotal = fixedExpenses.reduce((sum, expense) => sum + expense.amount, 0)
+  const budget = getBudget(selectedMonth)
 
   return (
     <div className="space-y-5">
@@ -99,7 +101,12 @@ export default function Overview({
         <p className="section-title">資料匯出</p>
         <p className="mt-2 subtle-text">將所有支出與固定支出匯出為 Excel 活頁簿。</p>
         <div className="mt-4">
-          <ExportButton expenses={expenses} fixedExpenses={fixedExpenses} />
+          <ExportButton
+            expenses={expenses}
+            fixedExpenses={fixedExpenses}
+            selectedMonth={selectedMonth}
+            budget={budget}
+          />
         </div>
       </section>
     </div>

@@ -46,6 +46,7 @@ function App() {
                   element={
                     <Overview
                       expenses={expenseStore.expenses}
+                      getBudget={budgetStore.getBudget}
                       fixedExpenses={fixedExpenseStore.fixedExpenses}
                       addFixedExpense={fixedExpenseStore.addFixedExpense}
                       removeFixedExpense={fixedExpenseStore.removeFixedExpense}

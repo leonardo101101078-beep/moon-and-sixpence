@@ -49,58 +49,60 @@ export default function ExpenseForm({ onSubmit }) {
         </div>
       </div>
 
-      <label className="space-y-2">
-        <span className="text-sm font-medium text-stone-600">日期</span>
-        <input
-          className="input"
-          type="date"
-          value={form.date}
-          onChange={(event) => updateField('date', event.target.value)}
-        />
-      </label>
-
-      <div className="grid grid-cols-[minmax(0,1fr)_120px] gap-3">
+      <div className="space-y-4 pr-3">
         <label className="space-y-2">
-        <span className="text-sm font-medium text-stone-600">金額</span>
-        <input
-          className="input"
-          type="number"
-          min="0"
-          step="0.01"
-          inputMode="decimal"
-          placeholder="12.50"
-          value={form.amount}
-          onChange={(event) => updateField('amount', event.target.value)}
-        />
+          <span className="text-sm font-medium text-stone-600">日期</span>
+          <input
+            className="input"
+            type="date"
+            value={form.date}
+            onChange={(event) => updateField('date', event.target.value)}
+          />
         </label>
 
+        <div className="grid grid-cols-[minmax(0,1fr)_120px] gap-3">
+          <label className="space-y-2">
+            <span className="text-sm font-medium text-stone-600">金額</span>
+            <input
+              className="input"
+              type="number"
+              min="0"
+              step="0.01"
+              inputMode="decimal"
+              placeholder="12.50"
+              value={form.amount}
+              onChange={(event) => updateField('amount', event.target.value)}
+            />
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-medium text-stone-600">幣值</span>
+            <select
+              className="input"
+              value={form.currency}
+              onChange={(event) => updateField('currency', event.target.value)}
+            >
+              {CURRENCY_OPTIONS.map((currency) => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
         <label className="space-y-2">
-          <span className="text-sm font-medium text-stone-600">幣值</span>
-          <select
+          <span className="text-sm font-medium text-stone-600">備註</span>
+          <input
             className="input"
-            value={form.currency}
-            onChange={(event) => updateField('currency', event.target.value)}
-          >
-            {CURRENCY_OPTIONS.map((currency) => (
-              <option key={currency} value={currency}>
-                {currency}
-              </option>
-            ))}
-          </select>
+            type="text"
+            maxLength="60"
+            placeholder="午餐、超市、車資..."
+            value={form.note}
+            onChange={(event) => updateField('note', event.target.value)}
+          />
         </label>
       </div>
-
-      <label className="space-y-2">
-        <span className="text-sm font-medium text-stone-600">備註</span>
-        <input
-          className="input"
-          type="text"
-          maxLength="60"
-          placeholder="午餐、超市、車資..."
-          value={form.note}
-          onChange={(event) => updateField('note', event.target.value)}
-        />
-      </label>
 
       <div className="space-y-2">
         <span className="text-sm font-medium text-stone-600">標籤</span>

@@ -130,6 +130,15 @@ SGD（預設）、USD、EUR、GBP、JPY、CNY、HKD、MYR、AUD、TWD
   - 預算卡主金額改為負號格式顯示
   - 新增支出表單改為 `日期 → 金額 / 幣值 → 備註 → 標籤`
   - 本月紀錄中的幣值已改為顯示在金額後方
+- 已完成新增支出表單欄位對齊優化：
+  - `日期`、`金額 / 幣值`、`備註` 現在共用同一內容寬度
+  - 表單輸入區右邊界已對齊，版面更整齊
+- 已完成 Excel 匯出摘要增強：
+  - 保留 `Expenses` 與 `Fixed Expenses`
+  - 新增 `Summary` sheet
+  - `Summary` 會帶出目前總覽月份與當月預算
+  - `Summary` 會列出 `SGD` 類別總和
+  - 非 `SGD` 項目會在同一張 `Summary` sheet 中分開列出，不混入分類總和
 
 ### 最近更新
 - 已修正本機預覽空白頁問題：
@@ -138,9 +147,13 @@ SGD（預設）、USD、EUR、GBP、JPY、CNY、HKD、MYR、AUD、TWD
 - 已確認專案本身可正常渲染：
   - 使用 headless Chrome 驗證 `http://127.0.0.1:5173/#/` 可正常顯示首頁內容
   - `http://127.0.0.1:4173/#/` 若仍空白，較可能是 in-app browser 當前分頁的快取 / 狀態問題，而非專案程式碼錯誤
+- 已完成總覽頁匯出資料串接：
+  - `Overview` 會把目前 `selectedMonth` 與該月份 `budget` 傳給匯出按鈕
+  - `exportExcel` 已從舊的兩參數形式擴充為接收摘要所需資料
 
 ### 已驗證
 - `npm run build` 可通過
 - Headless Chrome 可正常渲染首頁預覽畫面
 - favicon、PWA icon 與 iOS `apple-touch-icon` 已接入頁面與 manifest
 - `dist/index.html` 與 `dist/manifest.webmanifest` 已確認改為相對資源路徑
+- 新的 `Summary` 匯出邏輯已接入並通過建置驗證
