@@ -49,15 +49,29 @@ export default function ExpenseForm({ onSubmit }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <label className="space-y-2">
+        <span className="text-sm font-medium text-stone-600">日期</span>
+        <input
+          className="input"
+          type="date"
+          value={form.date}
+          onChange={(event) => updateField('date', event.target.value)}
+        />
+      </label>
+
+      <div className="grid grid-cols-[minmax(0,1fr)_120px] gap-3">
         <label className="space-y-2">
-          <span className="text-sm font-medium text-stone-600">日期</span>
-          <input
-            className="input"
-            type="date"
-            value={form.date}
-            onChange={(event) => updateField('date', event.target.value)}
-          />
+        <span className="text-sm font-medium text-stone-600">金額</span>
+        <input
+          className="input"
+          type="number"
+          min="0"
+          step="0.01"
+          inputMode="decimal"
+          placeholder="12.50"
+          value={form.amount}
+          onChange={(event) => updateField('amount', event.target.value)}
+        />
         </label>
 
         <label className="space-y-2">
@@ -75,20 +89,6 @@ export default function ExpenseForm({ onSubmit }) {
           </select>
         </label>
       </div>
-
-      <label className="space-y-2">
-        <span className="text-sm font-medium text-stone-600">金額</span>
-        <input
-          className="input"
-          type="number"
-          min="0"
-          step="0.01"
-          inputMode="decimal"
-          placeholder="12.50"
-          value={form.amount}
-          onChange={(event) => updateField('amount', event.target.value)}
-        />
-      </label>
 
       <label className="space-y-2">
         <span className="text-sm font-medium text-stone-600">備註</span>

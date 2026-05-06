@@ -30,11 +30,12 @@ export default function ExpenseItem({ expense, onRemove }) {
             {expense.tag}
           </span>
         </div>
-        <p className="mt-1 text-xs text-stone-500">{expense.currency}</p>
       </div>
 
       <div className="text-right">
-        <p className="text-sm font-semibold text-stone-900">{formatAmount(expense.amount)}</p>
+        <p className="text-sm font-semibold text-stone-900">
+          {formatAmount(expense.amount)} {expense.currency}
+        </p>
         <button
           type="button"
           className="mt-2 text-xs font-medium text-rose-500 transition hover:text-rose-600"

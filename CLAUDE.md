@@ -88,6 +88,7 @@ SGD（預設）、USD、EUR、GBP、JPY、CNY、HKD、MYR、AUD、TWD
 - `public/icon-192.png` 和 `public/icon-512.png` 為必要 PWA 圖示
 - `vite.config.js` 使用 `VitePWA({ registerType: 'autoUpdate', manifest: { name: '支出記錄', display: 'standalone' } })`
 - 使用 HashRouter 避免靜態部署的 SPA 路由問題
+- 目前 `vite.config.js` 已改為相對路徑 `base: './'`，避免本機預覽時資源指向錯誤子路徑
 
 ## 目前進度
 
@@ -121,8 +122,25 @@ SGD（預設）、USD、EUR、GBP、JPY、CNY、HKD、MYR、AUD、TWD
   - 支出列表主標題改為 `月亮與六便士`
   - 支出列表說明改為 `管理好六便士，才能追月亮`
   - 總覽頁主標題改為 `總覽`
+- 已完成支出列表與總覽頁精簡化調整：
+  - 支出列表頁首右上角 `筆數` 卡片已移除
+  - 總覽頁首右上角 `類別數` 卡片已移除
+  - 總覽頁主標下方說明句已移除
+  - 預算卡中的年月份、支出說明句、`進度` 文字已移除
+  - 預算卡主金額改為負號格式顯示
+  - 新增支出表單改為 `日期 → 金額 / 幣值 → 備註 → 標籤`
+  - 本月紀錄中的幣值已改為顯示在金額後方
+
+### 最近更新
+- 已修正本機預覽空白頁問題：
+  - 原因是先前 `base` 固定為 `/moon-and-sixpence/`，導致 localhost 預覽抓錯資源路徑
+  - 已改為相對路徑輸出，`dist/index.html` 與 `manifest.webmanifest` 現在會使用 `./...`
+- 已確認專案本身可正常渲染：
+  - 使用 headless Chrome 驗證 `http://127.0.0.1:5173/#/` 可正常顯示首頁內容
+  - `http://127.0.0.1:4173/#/` 若仍空白，較可能是 in-app browser 當前分頁的快取 / 狀態問題，而非專案程式碼錯誤
 
 ### 已驗證
 - `npm run build` 可通過
-- in-app browser 可正常開啟本地預覽頁
+- Headless Chrome 可正常渲染首頁預覽畫面
 - favicon、PWA icon 與 iOS `apple-touch-icon` 已接入頁面與 manifest
+- `dist/index.html` 與 `dist/manifest.webmanifest` 已確認改為相對資源路徑

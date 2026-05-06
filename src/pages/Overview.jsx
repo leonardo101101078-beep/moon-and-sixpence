@@ -58,20 +58,11 @@ export default function Overview({
         <p className="text-sm font-medium uppercase tracking-[0.24em] text-orange-600">
           Overview
         </p>
-        <div className="mt-2 flex items-end justify-between gap-4">
-          <div>
+        <div className="mt-2">
+          <div className="max-w-xs">
             <h1 className="text-3xl font-semibold tracking-[-0.05em] text-stone-950">
               總覽
             </h1>
-            <p className="mt-2 max-w-xs text-sm leading-6 text-stone-500">
-              快速查看每月分類比例，並順手整理固定扣款與匯出資料。
-            </p>
-          </div>
-          <div className="rounded-[24px] border border-white/70 bg-white/80 px-4 py-3 text-right shadow-sm">
-            <p className="text-xs uppercase tracking-[0.24em] text-stone-400">類別數</p>
-            <p className="mt-1 text-2xl font-semibold tracking-[-0.04em] text-stone-900">
-              {new Set(monthExpenses.map((expense) => expense.tag)).size}
-            </p>
           </div>
         </div>
       </header>

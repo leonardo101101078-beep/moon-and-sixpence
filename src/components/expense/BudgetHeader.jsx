@@ -8,7 +8,6 @@ function formatAmount(amount) {
 }
 
 export default function BudgetHeader({
-  monthLabel,
   monthTotal,
   budget,
   onSaveBudget,
@@ -36,13 +35,9 @@ export default function BudgetHeader({
     <section className="card overflow-hidden p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-stone-400">
-            {monthLabel}
-          </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-[-0.04em] text-stone-950">
-            {formatAmount(monthTotal)}
+            {monthTotal > 0 ? `-${formatAmount(monthTotal)}` : formatAmount(monthTotal)}
           </h1>
-          <p className="mt-1 text-sm text-stone-500">本月支出總額，跨幣值僅做原值加總。</p>
         </div>
 
         <div className="rounded-[24px] bg-stone-100/90 px-4 py-3 text-right">
@@ -83,8 +78,7 @@ export default function BudgetHeader({
       </div>
 
       <div className="mt-5 space-y-2">
-        <div className="flex items-center justify-between text-sm text-stone-500">
-          <span>進度</span>
+        <div className="flex justify-end text-sm text-stone-500">
           <span>{budget > 0 ? `${Math.round(progressRatio * 100)}%` : '未設定'}</span>
         </div>
         <div className="h-3 overflow-hidden rounded-full bg-stone-100">
